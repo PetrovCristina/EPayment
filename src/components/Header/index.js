@@ -3,8 +3,6 @@ import logo from './logo.png'
 import './header.css'
 import {
   Button,
-  Form,
-  FormGroup,
   Label,
   InputGroup,
   InputGroupAddon,
@@ -50,16 +48,6 @@ export default class Header extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <Form className="search">
-                <FormGroup>
-                  <Input
-                    type="search"
-                    name="search"
-                    id="search"
-                    placeholder="Search..."
-                  />
-                </FormGroup>
-              </Form>
               <ButtonDropdown
                 isOpen={this.state.isOpen}
                 toggle={this.toggle}
