@@ -22,6 +22,8 @@ import {
   DropdownItem
 } from 'reactstrap'
 
+import { l10n } from "../../l10n";
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -53,18 +55,18 @@ export default class Header extends React.Component {
                 toggle={this.toggle}
                 className="lang">
                 <DropdownToggle caret size="sm">
-                  En
+                  {l10n('languages.en')}
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Ro</DropdownItem>
-                  <DropdownItem>Rus</DropdownItem>
+                  <DropdownItem>{l10n('languages.ro')}</DropdownItem>
+                  <DropdownItem>{l10n('languages.ru')}</DropdownItem>
                 </DropdownMenu>
               </ButtonDropdown>
               <Button outline color="info" className="register">
-                Register
+                {l10n('label.register')}
               </Button>
               <Button outline color="success" className="login">
-                Log In
+                {l10n('label.login')}
               </Button>
             </Nav>
           </Collapse>
