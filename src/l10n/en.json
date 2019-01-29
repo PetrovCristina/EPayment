@@ -1,0 +1,11 @@
+{
+  "label": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "languages": {
+    "ro": "Ro",
+    "ru": "Ru",
+    "en": "En"
+  }
+}
