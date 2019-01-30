@@ -1,6 +1,5 @@
-import React from 'react'
-import logo from './logo.png'
-import './header.css'
+import React from "react";
+import logo from "./logo.png";
 import {
   Button,
   Collapse,
@@ -8,63 +7,54 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-
   DropdownToggle,
-  ButtonDropdown,
+  UncontrolledDropdown,
   DropdownMenu,
+  Container,
   DropdownItem
-} from 'reactstrap'
+} from "reactstrap";
 
-import { l10n } from '../../l10n'
+import { l10n } from "../../l10n";
 
 export default class Header extends React.Component {
-  constructor(props) {
-    super(props)
+  state = {
+    isOpen: false
+  };
 
-    this.toggle = this.toggle.bind(this)
-    this.state = {
-      isOpen: false
-    }
-  }
-  toggle() {
+  toggle = () =>
     this.setState({
       isOpen: !this.state.isOpen
-    })
-  }
+    });
+
   render() {
     return (
-      <div>
-        <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md">
+        <Container>
           <NavbarBrand href="/">
-            <div className="logo">
-              <img src={logo} alt="Logo" />
-            </div>
+            <img src={logo} alt="Logo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <ButtonDropdown
-                isOpen={this.state.isOpen}
-                toggle={this.toggle}
-                className="lang">
-                <DropdownToggle caret size="sm">
-                  {l10n('languages.ro')}
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle caret nav>
+                  {l10n("languages.ro")}
                 </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>{l10n('languages.en')}</DropdownItem>
-                  <DropdownItem>{l10n('languages.ru')}</DropdownItem>
+                <DropdownMenu right>
+                  <DropdownItem>{l10n("languages.en")}</DropdownItem>
+                  <DropdownItem>{l10n("languages.ru")}</DropdownItem>
                 </DropdownMenu>
-              </ButtonDropdown>
-              <Button outline color="info" className="register">
-                {l10n('label.register')}
+              </UncontrolledDropdown>
+              <Button outline color="info" className="mt-2 mt-md-0 ml-md-2">
+                {l10n("label.register")}
               </Button>
-              <Button outline color="success" className="login">
-                {l10n('label.login')}
+              <Button outline color="success" className="mt-2 mt-md-0 ml-md-2">
+                {l10n("label.login")}
               </Button>
             </Nav>
           </Collapse>
-        </Navbar>
-      </div>
-    )
+        </Container>
+      </Navbar>
+    );
   }
 }
