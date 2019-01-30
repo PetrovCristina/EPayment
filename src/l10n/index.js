@@ -1,7 +1,7 @@
-import get from "lodash.get";
+import get from 'lodash.get'
 
-import en from "./en.json";
+import ro from './ro.json'
 
 export function l10n(key) {
-  return get(en, key, key);
+  return get(ro, key, key)
 }

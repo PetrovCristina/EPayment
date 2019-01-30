@@ -1,0 +1,135 @@
+.categories h3 {
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #696969;
+}
+/* cards */
+.flippy1 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy2 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy3 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy4 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy5 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy6 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy7 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.flippy8 {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: #2f4f4f;
+  font-style: oblique;
+}
+.container img {
+  margin-left: -32px;
+  margin-top: -12px;
+  opacity: 0.2;
+}
+.container button {
+  bottom: 80px;
+  left: -80px;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+}
+.centered1 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+/* list */
+ul {
+  list-style-type: none;
+}
+
+li {
+  font: 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li a {
+  text-decoration: none;
+  color: #fff;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+  width: 200px;
+}
+
+li a:hover {
+  font-size: 30px;
+  background: transparent;
+  text-decoration: none;
+  color: #1aab8a;
+}
+
+/*button*/
+button {
+  background: #1aab8a;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 40px;
+  font-size: 1.6em;
+  padding: 0 1.5em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+button:hover {
+  background: #fff;
+  color: #1aab8a;
+}
+button:before,
+button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #1aab8a;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
