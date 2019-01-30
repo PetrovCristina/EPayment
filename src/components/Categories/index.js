@@ -17,6 +17,7 @@ export default class Categories extends React.Component {
             <FrontSide className="frontside">
               <div className="container">
                 <img
+				alt = "category name"
                   src={Telefonie}
                   style={{ width: '300px', height: '300px' }}
                 />
@@ -26,6 +27,7 @@ export default class Categories extends React.Component {
             <BackSide style={{ backgroundColor: '#175852' }}>
               <div className="container">
                 <img
+				alt = "category name back side"
                   src={Telefonie}
                   style={{ width: '300px', height: '300px' }}
                 />
