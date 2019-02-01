@@ -5,7 +5,7 @@
   "repository": {
     "type" : "git",
     "url" : "https://github.com/PetrovCristina/EPayment.git"
-  }
+  },
   "dependencies": {
     "bootstrap": "^4.2.1",
     "lodash.get": "^4.4.2",
