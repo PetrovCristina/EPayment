@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Container,
   Row,
@@ -9,87 +9,75 @@ import {
   CardFooter,
   CardText,
   Button
-} from "reactstrap";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
+} from 'reactstrap'
+import Flippy, { FrontSide, BackSide } from 'react-flippy'
 
-import "./categories.css";
-import Telefonie from "./images/1.jpg";
-import Online from "./images/2.jpg";
+import './categories.css'
+import Telefonie from './images/1.jpg'
+import Online from './images/2.jpg'
 
 const categories = [
   {
-    name: "Telefonia mobila",
-    services: ["Orange", "Moldcell", "Unite"],
+    name: 'Telefonia mobila',
+    services: ['Orange', 'Moldcell'],
     image: Telefonie
   },
   {
-    name: "Servicii comunale",
-    services: ["Gaz", "GasNaturalFenosa", "FeeNord", "ApaCanal"],
-    image: undefined,
+    name: 'Servicii comunale',
+    services: ['RedNord', 'MoldovaGaz', 'ApaCanal'],
+    image: undefined
   },
   {
-    name: "Operatori TV si Internet",
-    services: ["StarNet", "Moldtelecom", "SunCommunications"],
-    image: undefined,
+    name: 'Operatori TV si Internet',
+    services: ['Moldtelecom', 'SunCommunications'],
+    image: undefined
   },
   {
-    name: "Cosmetica",
-    services: ["Avon", "Oriflame", "Faberlic"],
-    image: undefined,
-  },
-  {
-    name: "Servicii financiare",
-    services: ["MAIB", "CreditBun", "eCredit"],
-    image: undefined,
-  },
-  {
-    name: "Bani electronici",
-    services: ["WebMoney", "QIWI"],
-    image: Online,
-  },
-  {
-    name: "Retele sociale",
-    services: ["Odnoklassniki", "VKontakte"],
-    image: undefined,
-  },
-  {
-    name: "Altele",
-    services: ["Cupon.md", "Zumzi", "Surprise.md"],
-    image: undefined,
+    name: 'Bani electronici',
+    services: ['WebMoney', 'PayPal'],
+    image: Online
   }
-];
+]
 
 export default class Categories extends React.Component {
   render() {
     return (
       <Container>
-        <h2 className="my-4">Categories</h2>
+        <h2 className="my-4">Operatii</h2>
 
         <Row>
           {categories.map((category, index) => (
-            <Col key={index} xs={12} md={6} lg={4} xl={3} className={"mb-4"}>
+            <Col key={index} xs={12} md={6} lg={4} xl={3} className={'mb-4'}>
               <Flippy flipOnHover={true} flipDirection="horizontal">
-                <FrontSide style={{ padding: "0" }}>
+                <FrontSide style={{ padding: '0' }}>
                   <Card>
                     <div className="card-img-wrapper">
-                      <CardImg top src={category.image} style={{ backgroundColor: "#41669d" }} />
+                      <CardImg
+                        top
+                        src={category.image}
+                        style={{ backgroundColor: '#41669d' }}
+                      />
                     </div>
                     <CardBody>
                       <CardText>{category.name}</CardText>
                     </CardBody>
                     <CardFooter className="text-truncate">
-                      {category.services.join(", ")}
+                      {category.services.join(', ')}
                     </CardFooter>
                   </Card>
                 </FrontSide>
-                <BackSide style={{ padding: "0" }}>
+                <BackSide style={{ padding: '0' }}>
                   <Card>
                     <div className="card-img-wrapper">
-                      <CardImg top src={category.image} style={{ backgroundColor: "#175852" }} />
+                      <CardImg
+                        top
+                        src={category.image}
+                        style={{ backgroundColor: '#175852' }}
+                      />
                     </div>
                     <CardBody>
                       <CardText className="text-truncate">
-                        {category.services.join(", ")}
+                        {category.services.join(', ')}
                       </CardText>
                     </CardBody>
                     <CardFooter>
@@ -102,6 +90,6 @@ export default class Categories extends React.Component {
           ))}
         </Row>
       </Container>
-    );
+    )
   }
 }
