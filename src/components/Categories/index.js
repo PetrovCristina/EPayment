@@ -15,6 +15,8 @@ import Flippy, { FrontSide, BackSide } from 'react-flippy'
 import './categories.css'
 import Telefonie from './images/1.jpg'
 import Online from './images/2.jpg'
+import ServiciiComunale from './images/3.png'
+import TV from './images/4.jpg'
 
 const categories = [
   {
@@ -25,12 +27,12 @@ const categories = [
   {
     name: 'Servicii comunale',
     services: ['RedNord', 'MoldovaGaz', 'ApaCanal'],
-    image: undefined
+    image: ServiciiComunale
   },
   {
     name: 'Operatori TV si Internet',
     services: ['Moldtelecom', 'SunCommunications'],
-    image: undefined
+    image: TV
   },
   {
     name: 'Bani electronici',
