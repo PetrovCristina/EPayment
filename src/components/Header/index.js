@@ -13,12 +13,13 @@ import {
   Container,
   DropdownItem
 } from 'reactstrap'
-
+import { Redirect } from 'react-router'
 import { l10n } from '../../l10n'
 
 export default class Header extends React.Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    navigate: false
   }
 
   toggle = () =>
@@ -27,6 +28,11 @@ export default class Header extends React.Component {
     })
 
   render() {
+    const { navigate } = this.state
+
+    if (navigate) {
+      return <Redirect to="/register" push={true} />
+    }
     return (
       <Navbar color="light" light expand="md">
         <Container>
@@ -45,7 +51,11 @@ export default class Header extends React.Component {
                   <DropdownItem>{l10n('languages.ru')}</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <Button outline color="info" className="mt-2 mt-md-0 ml-md-2">
+              <Button
+                outline
+                color="info"
+                className="mt-2 mt-md-0 ml-md-2"
+                onClick={() => this.setState({ navigate: true })}>
                 {l10n('label.register')}
               </Button>
               <Button outline color="success" className="mt-2 mt-md-0 ml-md-2">
