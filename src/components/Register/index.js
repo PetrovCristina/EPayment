@@ -5,13 +5,17 @@ const Register = () => {
   return (
     <Form>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col} controlId="formGridName">
           <Form.Label>Nume</Form.Label>
           <Form.Control placeholder="Introdu numele" />
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridEmail">
+        <Form.Group as={Col} controlId="formGridSurname">
           <Form.Label>Prenume</Form.Label>
           <Form.Control placeholder="Introdu prenumele" />
+        </Form.Group>
+        <Form.Group as={Col} controlId="formGridPhone">
+          <Form.Label>Telefon</Form.Label>
+          <Form.Control placeholder="Introdu numarul de telefon" />
         </Form.Group>
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
@@ -25,7 +29,7 @@ const Register = () => {
       </Form.Row>
 
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridState">
+        <Form.Group as={Col} controlId="formGridCountry">
           <Form.Label>Tara</Form.Label>
           <Form.Control as="select">
             <option>Alege...</option>

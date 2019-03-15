@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Categories from './components/Categories'
 import Footer from './components/Footer'
 import Register from './components/Register'
+import Login from './components/Login'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,6 +21,7 @@ class App extends Component {
         <div>
           <Header />
           <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Categories />
           <Footer />
         </div>
