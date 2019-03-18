@@ -13,13 +13,12 @@ import {
   Container,
   DropdownItem
 } from 'reactstrap'
-import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import { l10n } from '../../l10n'
 
 export default class Header extends React.Component {
   state = {
     isOpen: false,
-    navigate: false
   }
 
   toggle = () =>
@@ -28,15 +27,10 @@ export default class Header extends React.Component {
     })
 
   render() {
-    const { navigate } = this.state
-
-    if (navigate) {
-      return <Redirect to="/register" push={true} />
-    }
     return (
       <Navbar color="light" light expand="md">
         <Container>
-          <NavbarBrand href="/">
+          <NavbarBrand to="/" tag={Link}>
             <img src={logo} alt="Logo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -53,12 +47,17 @@ export default class Header extends React.Component {
               </UncontrolledDropdown>
               <Button
                 outline
+                tag={Link}
+                to="/register"
                 color="info"
-                className="mt-2 mt-md-0 ml-md-2"
-                onClick={() => this.setState({ navigate: true })}>
+                className="mt-2 mt-md-0 ml-md-2">
                 {l10n('label.register')}
               </Button>
-              <Button outline color="success" className="mt-2 mt-md-0 ml-md-2">
+              <Button
+                tag={Link}
+                to="/login"
+                outline color="success"
+                className="mt-2 mt-md-0 ml-md-2">
                 {l10n('label.login')}
               </Button>
             </Nav>

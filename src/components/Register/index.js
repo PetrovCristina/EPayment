@@ -1,48 +1,131 @@
-import React from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
+import React from "react";
+import {
+  Form,
+  Col,
+  Row,
+  Button,
+  FormGroup,
+  Label,
+  Input,
+  Container
+} from "reactstrap";
 
-const Register = () => {
-  return (
-    <Form>
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridName">
-          <Form.Label>Nume</Form.Label>
-          <Form.Control placeholder="Introdu numele" />
-        </Form.Group>
-        <Form.Group as={Col} controlId="formGridSurname">
-          <Form.Label>Prenume</Form.Label>
-          <Form.Control placeholder="Introdu prenumele" />
-        </Form.Group>
-        <Form.Group as={Col} controlId="formGridPhone">
-          <Form.Label>Telefon</Form.Label>
-          <Form.Control placeholder="Introdu numarul de telefon" />
-        </Form.Group>
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Introdu email" />
-        </Form.Group>
+class Register extends React.Component {
+  state = {
+    name: "",
+    surname: "",
+    phone: "",
+    email: "",
+    password: "",
+    country: ""
+  };
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Parola</Form.Label>
-          <Form.Control type="password" placeholder="Parola" />
-        </Form.Group>
-      </Form.Row>
+  onSubmit = e => {
+    e.preventDefault();
+    console.log("Form is submited");
+    console.log(this.state);
+  };
 
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridCountry">
-          <Form.Label>Tara</Form.Label>
-          <Form.Control as="select">
-            <option>Alege...</option>
-            <option>Republica Moldova</option>
-          </Form.Control>
-        </Form.Group>
-      </Form.Row>
+  onChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-      <Button variant="primary" type="submit">
-        Inregistrare
-      </Button>
-    </Form>
-  )
+  render() {
+    const { name, surname, phone, email, password, country } = this.state;
+
+    return (
+      <Container className="mt-3">
+        <Form onSubmit={this.onSubmit}>
+          <Row>
+            <Col>
+              <FormGroup>
+                <Label>Nume</Label>
+                <Input
+                  name="name"
+                  placeholder="Introdu numele"
+                  value={name}
+                  onChange={this.onChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label>Prenume</Label>
+                <Input
+                  name="surname"
+                  placeholder="Introdu prenumele"
+                  value={surname}
+                  onChange={this.onChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <FormGroup>
+                <Label>Telefon</Label>
+                <Input
+                  name="phone"
+                  placeholder="Introdu numarul de telefon"
+                  value={phone}
+                  onChange={this.onChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label>Email</Label>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Introdu email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={this.onChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <FormGroup>
+                <Label>Parola</Label>
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Parola"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={this.onChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col>
+              <FormGroup>
+                <Label>Tara</Label>
+                <Input
+                  name="country"
+                  type="select"
+                  value={country}
+                  onChange={this.onChange}
+                >
+                  <option value="">Alege...</option>
+                  <option value="MD">Republica Moldova</option>
+                </Input>
+              </FormGroup>
+            </Col>
+          </Row>
+
+          <Button color="success">Inregistrare</Button>
+        </Form>
+      </Container>
+    );
+  }
 }
 
-export default Register
+export default Register;
