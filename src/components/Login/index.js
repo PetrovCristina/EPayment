@@ -1,26 +1,76 @@
-import React from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
+import React from "react";
+import {
+  Form,
+  Col,
+  Row,
+  Container,
+  Button,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
 
-const Login = () => {
-  return (
-    <Form>
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridPhone">
-          <Form.Label>Telefon</Form.Label>
-          <Form.Control placeholder="Introdu numarul de telefon" />
-        </Form.Group>
+class Login extends React.Component {
+  state = {
+    email: "",
+    password: ""
+  };
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Parola</Form.Label>
-          <Form.Control type="password" placeholder="Parola" />
-        </Form.Group>
-      </Form.Row>
+  onSubmit = e => {
+    e.preventDefault();
+    console.log("Form submited");
+    console.log(this.state);
+  };
 
-      <Button variant="primary" type="submit">
-        Logare
-      </Button>
-    </Form>
-  )
+  onChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  render() {
+    const { email, password } = this.state;
+    return (
+      <Container className="mt-3">
+        <Form onSubmit={this.onSubmit}>
+          <Row>
+            <Col
+              xs={12}
+              sm={{ size: 8, offset: 2 }}
+              md={{ size: 6, offset: 3 }}
+              lg={{ size: 4, offset: 4 }}
+            >
+              <FormGroup>
+                <Label>Telefon</Label>
+                <Input
+                  name="email"
+                  value={email}
+                  onChange={this.onChange}
+                  placeholder="Introdu numarul de telefon"
+                  autoComplete="email"
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label>Parola</Label>
+                <Input
+                  name="password"
+                  value={password}
+                  onChange={this.onChange}
+                  type="password"
+                  placeholder="Parola"
+                  autoComplete="current-password"
+                />
+              </FormGroup>
+
+              <Button color="success">Logare</Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
+    );
+  }
 }
 
-export default Login
+export default Login;

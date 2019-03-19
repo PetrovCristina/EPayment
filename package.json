@@ -2,6 +2,7 @@
   "name": "epay",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:8000",
   "repository": {
     "type": "git",
     "url": "https://github.com/PetrovCristina/EPayment.git"
@@ -15,7 +16,6 @@
     "mdbreact": "^4.11.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
-    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.7.0",
     "react-flippy": "^0.1.2",
     "react-router": "^4.3.1",
