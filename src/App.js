@@ -12,11 +12,24 @@ import {
   faHome,
   faEnvelope,
   faPhone,
-  faFileInvoiceDollar
+  faFileInvoiceDollar,
+  faSyncAlt,
+  faHandshake,
+  faFileWord,
+  faSortAmountUp
 } from '@fortawesome/free-solid-svg-icons'
 import { Route, Switch } from 'react-router-dom'
 
-library.add(faHome, faEnvelope, faPhone, faFileInvoiceDollar)
+library.add(
+  faHome,
+  faEnvelope,
+  faPhone,
+  faFileInvoiceDollar,
+  faSyncAlt,
+  faHandshake,
+  faFileWord,
+  faSortAmountUp
+)
 
 class App extends Component {
   render() {

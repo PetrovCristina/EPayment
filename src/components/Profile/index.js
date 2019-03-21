@@ -18,6 +18,7 @@ import {
 } from 'reactstrap'
 import { Redirect } from 'react-router'
 import { l10n } from '../../l10n'
+import Avatar from 'react-avatar'
 
 export default class Profile extends React.Component {
   state = {
@@ -55,11 +56,49 @@ export default class Profile extends React.Component {
             </Collapse>
           </Container>
         </Navbar>
-        <h1>Bine ai venit!</h1>
-        <a href="#" class="button button5">
-          Achita
-          <FontAwesomeIcon icon="file-invoice-dollar" />
-        </a>
+        <div className="clearfix">
+          <Avatar
+            className="avatar"
+            facebookId="100002063356654"
+            size="80"
+            round="50%"
+          />
+          <p className="welcome">Bine ai venit!</p>
+        </div>
+        <div className="operations">
+          <Button outline color="success" className="pay">
+            <FontAwesomeIcon className="icon" icon="file-invoice-dollar" />
+            Efectueaza plati
+          </Button>
+          <Button outline color="success" className="pay">
+            <FontAwesomeIcon className="icon" icon="sync-alt" />
+            Schimba valuta
+          </Button>
+          <Button outline color="success" className="pay">
+            <FontAwesomeIcon className="icon" icon="file-word" />
+            Retrage bani
+          </Button>
+          <Button outline color="success" className="pay">
+            <FontAwesomeIcon className="icon" icon="handshake" />
+            Transfera bani
+          </Button>
+          <Button outline color="success" className="pay">
+            <FontAwesomeIcon className="icon" icon="sort-amount-up" />
+            Suplineste contul
+          </Button>
+        </div>
+        <div>
+          <p className="images">Imagini</p>
+          <p className="description">
+            Aici vei incarca pozele (de la 2 pina la 4) pentru autentificarea
+            beneficiarului prin recunoastere faciala:
+          </p>
+          <ul className="restrictions">
+            <li>cerinta 1</li>
+            <li>cerinta 2</li>
+            <li>cerinta 3</li>
+          </ul>
+        </div>
         <MDBFooter color="mdb-color" className="font-small pt-4 mt-4">
           <hr />
           <MDBContainer className="text-center text-md-left">

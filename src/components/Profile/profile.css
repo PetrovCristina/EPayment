@@ -1,16 +1,31 @@
-.button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin: 8px 2px;
-  cursor: pointer;
+.welcome {
+  margin-left: 150px;
+  margin-top: 20px;
+  color: #393232;
+  font-size: 30px;
 }
-
-.button5 {
-  border-radius: 100%;
+.avatar {
+  float: left;
+  margin-left: 20px;
+}
+.clearfix {
+  overflow: auto;
+  margin-top: 40px;
+}
+.pay {
+  margin-left: 20px;
+  margin-top: 50px;
+}
+.icon {
+  margin-right: 10px;
+  display: inline-block;
+}
+.images {
+  margin-left: 20px;
+  margin-top: 20px;
+  color: #393232;
+  font-size: 30px;
+}
+.description {
+  margin-left: 20px;
 }
