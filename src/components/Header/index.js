@@ -18,7 +18,7 @@ import { l10n } from '../../l10n'
 
 export default class Header extends React.Component {
   state = {
-    isOpen: false,
+    isOpen: false
   }
 
   toggle = () =>
@@ -46,9 +46,9 @@ export default class Header extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <Button
-                outline
                 tag={Link}
                 to="/register"
+                outline
                 color="info"
                 className="mt-2 mt-md-0 ml-md-2">
                 {l10n('label.register')}
@@ -56,7 +56,8 @@ export default class Header extends React.Component {
               <Button
                 tag={Link}
                 to="/login"
-                outline color="success"
+                outline
+                color="success"
                 className="mt-2 mt-md-0 ml-md-2">
                 {l10n('label.login')}
               </Button>

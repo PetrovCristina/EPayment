@@ -6,6 +6,8 @@ import Categories from './components/Categories'
 import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
+import Profile from './components/Profile'
+import { Container } from 'reactstrap'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
@@ -36,11 +38,15 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header />
-        <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
-        <Categories />
+        <Container>
+          <Switch>
+            <Route exact path="/" component={Categories} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+        </Container>
+
         <Footer />
       </React.Fragment>
     )

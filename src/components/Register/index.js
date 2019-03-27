@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Form,
   Col,
@@ -8,37 +8,92 @@ import {
   Label,
   Input,
   Container
-} from "reactstrap";
+} from 'reactstrap'
+import axios from 'axios'
 
 class Register extends React.Component {
-  state = {
-    name: "",
-    surname: "",
-    phone: "",
-    email: "",
-    password: "",
-    country: ""
-  };
+  componentDidMount() {
+    axios
+      .get('http://127.0.0.1:8000/accounts/register')
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
+  handleFormSubmit = (event, requestType, profileID) => {
+    event.preventDefault()
+    const name = event.target.elements.name.value
+    const surname = event.target.elements.surname.value
+    const phone = event.target.elements.phone.value
+    const email = event.target.elements.email.value
+    const password = event.target.elements.password.value
+    const country = event.target.elements.country.value
+
+    switch (requestType) {
+      case 'post':
+        return axios
+          .post('http://127.0.0.1:8000/accounts/register', {
+            name: name,
+            surname: surname,
+            phone: phone,
+            email: email,
+            password: password,
+            country: country
+          })
+          .then(response => console.log(response))
+          .catch(error => console.err(error))
+      case 'put':
+        return axios
+          .put(`http://127.0.0.1:8000/accounts/${profileID}/`, {
+            name: name,
+            surname: surname,
+            phone: phone,
+            email: email,
+            password: password,
+            country: country
+          })
+          .then(response => console.log(response))
+          .catch(error => console.log(error))
+    }
+  }
+
+  state = {
+    name: '',
+    surname: '',
+    phone: '',
+    email: '',
+    password: '',
+    country: ''
+  }
   onSubmit = e => {
-    e.preventDefault();
-    console.log("Form is submited");
-    console.log(this.state);
-  };
+    e.preventDefault()
+    console.log('Form is submited')
+    console.log(this.state)
+  }
 
   onChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       [name]: value
-    });
-  };
+    })
+  }
 
   render() {
-    const { name, surname, phone, email, password, country } = this.state;
+    const { name, surname, phone, email, password, country } = this.state
 
     return (
       <Container className="mt-3">
-        <Form onSubmit={this.onSubmit}>
+        <Form
+          onSubmit={event =>
+            this.handleFormSubmit(
+              event,
+              this.props.requestType,
+              this.props.profileID
+            ).bind(this)
+          }>
           <Row>
             <Col>
               <FormGroup>
@@ -112,20 +167,20 @@ class Register extends React.Component {
                   name="country"
                   type="select"
                   value={country}
-                  onChange={this.onChange}
-                >
+                  onChange={this.onChange}>
                   <option value="">Alege...</option>
                   <option value="MD">Republica Moldova</option>
                 </Input>
               </FormGroup>
             </Col>
           </Row>
-
-          <Button color="success">Inregistrare</Button>
+          <Button color="success" onClick={this.handleFormSubmit.bind(this)}>
+            Inregistrare
+          </Button>
         </Form>
       </Container>
-    );
+    )
   }
 }
 
-export default Register;
+export default Register

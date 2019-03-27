@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Form,
   Col,
@@ -8,29 +8,40 @@ import {
   FormGroup,
   Label,
   Input
-} from "reactstrap";
+} from 'reactstrap'
+import axios from 'axios'
 
 class Login extends React.Component {
+  componentDidMount() {
+    axios
+      .get('http://127.0.0.1:8000/accounts/login')
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
   state = {
-    email: "",
-    password: ""
-  };
+    email: '',
+    password: ''
+  }
 
   onSubmit = e => {
-    e.preventDefault();
-    console.log("Form submited");
-    console.log(this.state);
-  };
+    e.preventDefault()
+    console.log('Form submited')
+    console.log(this.state)
+  }
 
   onChange = e => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     this.setState({
       [name]: value
-    });
-  };
+    })
+  }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password } = this.state
     return (
       <Container className="mt-3">
         <Form onSubmit={this.onSubmit}>
@@ -39,8 +50,7 @@ class Login extends React.Component {
               xs={12}
               sm={{ size: 8, offset: 2 }}
               md={{ size: 6, offset: 3 }}
-              lg={{ size: 4, offset: 4 }}
-            >
+              lg={{ size: 4, offset: 4 }}>
               <FormGroup>
                 <Label>Telefon</Label>
                 <Input
@@ -69,8 +79,8 @@ class Login extends React.Component {
           </Row>
         </Form>
       </Container>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login
