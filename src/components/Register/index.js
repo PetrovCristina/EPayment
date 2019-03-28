@@ -24,13 +24,12 @@ class Register extends React.Component {
   }
 
   handleFormSubmit = (event, requestType, profileID) => {
-    event.preventDefault()
-    const name = event.target.elements.name.value
-    const surname = event.target.elements.surname.value
-    const phone = event.target.elements.phone.value
-    const email = event.target.elements.email.value
-    const password = event.target.elements.password.value
-    const country = event.target.elements.country.value
+    const name = event.target.name.value
+    const surname = event.target.surname.value
+    const phone = event.target.phone.value
+    const email = event.target.email.value
+    const password = event.target.password.value
+    const country = event.target.country.value
 
     switch (requestType) {
       case 'post':
@@ -75,9 +74,14 @@ class Register extends React.Component {
   }
 
   onChange = e => {
-    const { name, value } = e.target
+    const { name, surname, phone, email, password, country, value } = e.target
     this.setState({
-      [name]: value
+      [name]: value,
+      [surname]: value,
+      [phone]: value,
+      [email]: value,
+      [password]: value,
+      [country]: value
     })
   }
 
@@ -174,9 +178,7 @@ class Register extends React.Component {
               </FormGroup>
             </Col>
           </Row>
-          <Button color="success" onClick={this.handleFormSubmit.bind(this)}>
-            Inregistrare
-          </Button>
+          <Button color="success">Inregistrare</Button>
         </Form>
       </Container>
     )

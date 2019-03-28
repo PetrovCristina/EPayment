@@ -23,13 +23,12 @@ class Login extends React.Component {
       })
   }
   state = {
-    email: '',
+    phone: '',
     password: ''
   }
 
   onSubmit = e => {
     e.preventDefault()
-    console.log('Form submited')
     console.log(this.state)
   }
 
@@ -41,7 +40,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state
+    const { phone, password } = this.state
     return (
       <Container className="mt-3">
         <Form onSubmit={this.onSubmit}>
@@ -54,11 +53,10 @@ class Login extends React.Component {
               <FormGroup>
                 <Label>Telefon</Label>
                 <Input
-                  name="email"
-                  value={email}
+                  name="phone"
+                  value={phone}
                   onChange={this.onChange}
                   placeholder="Introdu numarul de telefon"
-                  autoComplete="email"
                 />
               </FormGroup>
 

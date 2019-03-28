@@ -5,7 +5,36 @@ import './profile.css'
 import { Button, Navbar, Container } from 'reactstrap'
 import Avatar from 'react-avatar'
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      profilePic: null
+    }
+    this.inpuElement = null
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleChange(e) {
+    this.setState({ profilePic: e.target.files[0] })
+  }
+  handleSubmit() {
+    let formData = new FormData()
+    formData.append('profile_pic', this.state.profilePic)
+    fetch('http://127.0.0.1:8000/accounts/profile-pic/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*'
+      },
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => console.log(err))
+  }
+
   state = {
     isOpen: false
   }
@@ -66,8 +95,22 @@ export default class Profile extends React.Component {
             <li>cerinta 2</li>
             <li>cerinta 3</li>
           </ul>
+          <div>
+            <input
+              type="file"
+              multiple={false}
+              ref={input => {
+                this.inpuElement = input
+              }}
+              accept=".jpg,.jpeg,.png"
+              onChange={this.handleChange}
+            />
+            <button onClick={this.handleSubmit}>submit</button>
+          </div>
         </div>
       </div>
     )
   }
 }
+
+export default Profile
