@@ -15,27 +15,44 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { l10n } from '../../l10n'
-import * as actions from '../../store/actions/auth'
-import { connect } from 'react-redux'
 
-const Header = (handleSubmit, state, toggle) => {
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        this.props.onAuth(values.phone, values.password)
-      }
-    })
-    this.props.history.push('/profile')
-  }
-  state = {
-    isOpen: false
-  }
+import PropTypes from 'prop-types'
 
-  toggle = () =>
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+function Header(props) {
+  const logged_out_nav = (
+    <div>
+      <Button
+        tag={Link}
+        to="/login"
+        outline
+        color="success"
+        className="mt-2 mt-md-0 ml-md-2"
+        onClick={() => props.display_form('login')}>
+        {l10n('label.login')}
+      </Button>
+      <Button
+        tag={Link}
+        to="/register"
+        outline
+        color="info"
+        className="mt-2 mt-md-0 ml-md-2"
+        onClick={() => props.display_form('signup')}>
+        {l10n('label.register')}
+      </Button>
+    </div>
+  )
+
+  const logged_in_nav = (
+    <Button
+      tag={Link}
+      to="/logout"
+      outline
+      color="info"
+      className="mt-2 mt-md-0 ml-md-2"
+      onClick={props.handle_logout}>
+      {l10n('label.logout')}
+    </Button>
+  )
   return (
     <Navbar color="light" light expand="md">
       <Container>
@@ -54,22 +71,7 @@ const Header = (handleSubmit, state, toggle) => {
                 <DropdownItem>{l10n('languages.ru')}</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <Button
-              tag={Link}
-              to="/register"
-              outline
-              color="info"
-              className="mt-2 mt-md-0 ml-md-2">
-              {l10n('label.register')}
-            </Button>
-            <Button
-              tag={Link}
-              to="/login"
-              outline
-              color="success"
-              className="mt-2 mt-md-0 ml-md-2">
-              {l10n('label.login')}
-            </Button>
+            <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>
           </Nav>
         </Collapse>
       </Container>
@@ -77,20 +79,10 @@ const Header = (handleSubmit, state, toggle) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.loading,
-    error: state.error
-  }
-}
+export default Header
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAuth: (phone, password) => dispatch(actions.authLogin(phone, password))
-  }
+Nav.propTypes = {
+  logged_in: PropTypes.bool.isRequired,
+  display_form: PropTypes.func.isRequired,
+  handle_logout: PropTypes.func.isRequired
 }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header)

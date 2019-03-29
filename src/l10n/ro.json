@@ -1,7 +1,8 @@
 {
   "label": {
     "login": "Logare",
-    "register": "Inregistrare"
+    "register": "Inregistrare",
+    "logout": "Iesire"
   },
   "languages": {
     "ro": "Ro",

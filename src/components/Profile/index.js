@@ -100,7 +100,7 @@ class Profile extends React.Component {
               type="file"
               multiple={false}
               ref={input => {
-                this.inpuElement = input
+                this.inputElement = input
               }}
               accept=".jpg,.jpeg,.png"
               onChange={this.handleChange}

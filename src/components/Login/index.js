@@ -9,41 +9,29 @@ import {
   Label,
   Input
 } from 'reactstrap'
-import axios from 'axios'
+
+import PropTypes from 'prop-types'
 
 class Login extends React.Component {
-  componentDidMount() {
-    axios
-      .get('http://127.0.0.1:8000/accounts/login')
-      .then(response => {
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
   state = {
     phone: '',
     password: ''
   }
 
-  onSubmit = e => {
-    e.preventDefault()
-    console.log(this.state)
-  }
-
-  onChange = e => {
-    const { name, value } = e.target
-    this.setState({
-      [name]: value
+  handle_change = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState(prevstate => {
+      const newState = { ...prevstate }
+      newState[name] = value
+      return newState
     })
   }
 
   render() {
-    const { phone, password } = this.state
     return (
       <Container className="mt-3">
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={e => this.props.handle_login(e, this.state)}>
           <Row>
             <Col
               xs={12}
@@ -53,9 +41,10 @@ class Login extends React.Component {
               <FormGroup>
                 <Label>Telefon</Label>
                 <Input
+                  type="text"
                   name="phone"
-                  value={phone}
-                  onChange={this.onChange}
+                  value={this.state.phone}
+                  onChange={this.handle_change}
                   placeholder="Introdu numarul de telefon"
                 />
               </FormGroup>
@@ -63,10 +52,10 @@ class Login extends React.Component {
               <FormGroup>
                 <Label>Parola</Label>
                 <Input
-                  name="password"
-                  value={password}
-                  onChange={this.onChange}
                   type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handle_change}
                   placeholder="Parola"
                   autoComplete="current-password"
                 />
@@ -82,3 +71,7 @@ class Login extends React.Component {
 }
 
 export default Login
+
+Login.propTypes = {
+  handle_login: PropTypes.func.isRequired
+}

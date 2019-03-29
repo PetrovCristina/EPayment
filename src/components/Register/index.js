@@ -9,56 +9,10 @@ import {
   Input,
   Container
 } from 'reactstrap'
-import axios from 'axios'
+
+import PropTypes from 'prop-types'
 
 class Register extends React.Component {
-  componentDidMount() {
-    axios
-      .get('http://127.0.0.1:8000/accounts/register')
-      .then(response => {
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  handleFormSubmit = (event, requestType, profileID) => {
-    const name = event.target.name.value
-    const surname = event.target.surname.value
-    const phone = event.target.phone.value
-    const email = event.target.email.value
-    const password = event.target.password.value
-    const country = event.target.country.value
-
-    switch (requestType) {
-      case 'post':
-        return axios
-          .post('http://127.0.0.1:8000/accounts/register', {
-            name: name,
-            surname: surname,
-            phone: phone,
-            email: email,
-            password: password,
-            country: country
-          })
-          .then(response => console.log(response))
-          .catch(error => console.err(error))
-      case 'put':
-        return axios
-          .put(`http://127.0.0.1:8000/accounts/${profileID}/`, {
-            name: name,
-            surname: surname,
-            phone: phone,
-            email: email,
-            password: password,
-            country: country
-          })
-          .then(response => console.log(response))
-          .catch(error => console.log(error))
-    }
-  }
-
   state = {
     name: '',
     surname: '',
@@ -67,117 +21,101 @@ class Register extends React.Component {
     password: '',
     country: ''
   }
-  onSubmit = e => {
-    e.preventDefault()
-    console.log('Form is submited')
-    console.log(this.state)
-  }
-
-  onChange = e => {
-    const { name, surname, phone, email, password, country, value } = e.target
-    this.setState({
-      [name]: value,
-      [surname]: value,
-      [phone]: value,
-      [email]: value,
-      [password]: value,
-      [country]: value
+  handle_change = e => {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState(prevState => {
+      const newState = { ...prevState }
+      newState[name] = value
+      return newState
     })
   }
 
   render() {
-    const { name, surname, phone, email, password, country } = this.state
-
     return (
       <Container className="mt-3">
-        <Form
-          onSubmit={event =>
-            this.handleFormSubmit(
-              event,
-              this.props.requestType,
-              this.props.profileID
-            ).bind(this)
-          }>
+        <Form onSubmit={e => this.props.handle_signup(e, this.state)}>
           <Row>
             <Col>
               <FormGroup>
-                <Label>Nume</Label>
+                <Label htmlFor="name">Nume</Label>
+
                 <Input
+                  type="text"
                   name="name"
                   placeholder="Introdu numele"
-                  value={name}
-                  onChange={this.onChange}
+                  value={this.state.name}
+                  onChange={this.handle_change}
                 />
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
-                <Label>Prenume</Label>
+                <Label htmlFor="surname">Prenume</Label>
+
                 <Input
+                  type="text"
                   name="surname"
                   placeholder="Introdu prenumele"
-                  value={surname}
-                  onChange={this.onChange}
+                  value={this.state.surname}
+                  onChange={this.handle_change}
                 />
               </FormGroup>
             </Col>
-          </Row>
-
-          <Row>
             <Col>
               <FormGroup>
-                <Label>Telefon</Label>
+                <Label htmlFor="phone">Telefon</Label>
+
                 <Input
+                  type="text"
                   name="phone"
                   placeholder="Introdu numarul de telefon"
-                  value={phone}
-                  onChange={this.onChange}
+                  value={this.state.phone}
+                  onChange={this.handle_change}
                 />
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
-                <Label>Email</Label>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Introdu email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={this.onChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
+                <Label htmlFor="email">Email</Label>
 
-          <Row>
+                <Input
+                  type="text"
+                  name="email"
+                  placeholder="Introdu email-ul"
+                  value={this.state.email}
+                  onChange={this.handle_change}
+                />
+              </FormGroup>
+            </Col>
             <Col>
               <FormGroup>
-                <Label>Parola</Label>
+                <Label htmlFor="password">Prenume</Label>
+
                 <Input
                   name="password"
+                  placeholder="Introdu prenumele"
+                  value={this.state.password}
+                  onChange={this.handle_change}
                   type="password"
-                  placeholder="Parola"
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={this.onChange}
                 />
               </FormGroup>
             </Col>
             <Col>
               <FormGroup>
-                <Label>Tara</Label>
+                <Label htmlFor="country">Tara</Label>
                 <Input
                   name="country"
                   type="select"
-                  value={country}
-                  onChange={this.onChange}>
+                  value={this.state.country}
+                  onChange={this.handle_change}>
                   <option value="">Alege...</option>
                   <option value="MD">Republica Moldova</option>
                 </Input>
               </FormGroup>
             </Col>
           </Row>
+
           <Button color="success">Inregistrare</Button>
         </Form>
       </Container>
@@ -186,3 +124,7 @@ class Register extends React.Component {
 }
 
 export default Register
+
+Register.propTypes = {
+  handle_signup: PropTypes.func.isRequired
+}
