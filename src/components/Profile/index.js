@@ -20,8 +20,8 @@ class Profile extends React.Component {
   }
   handleSubmit() {
     let formData = new FormData()
-    formData.append('profile_pic', this.state.profilePic)
-    fetch('http://127.0.0.1:8000/accounts/profile-pic/', {
+    formData.append('profile-pic', this.state.profilePic)
+    fetch('/accounts/profile-pic/', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*'

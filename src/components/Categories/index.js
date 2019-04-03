@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Container,
   Row,
   Col,
   Card,
@@ -44,7 +43,7 @@ const categories = [
 export default class Categories extends React.Component {
   render() {
     return (
-      <Container>
+      <React.Fragment>
         <h2 className="my-4">Operatii</h2>
 
         <Row>
@@ -91,7 +90,7 @@ export default class Categories extends React.Component {
             </Col>
           ))}
         </Row>
-      </Container>
+      </React.Fragment>
     )
   }
 }
