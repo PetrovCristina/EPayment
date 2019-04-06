@@ -19,16 +19,19 @@ const Footer = () => {
           <MDBCol md="2" lg="2" xl="2" className="mx-auto mt-3">
             <h6 className="text-uppercase mb-4 font-weight-bold">Servicii</h6>
             <p>
-              <a href="#!">Telefonie mobila</a>
+              <a href="/plati">Efectueaza plati</a>
             </p>
             <p>
-              <a href="#!">Internet</a>
+              <a href="/valuta">Schimba valuta</a>
             </p>
             <p>
-              <a href="#!">Televiziune</a>
+              <a href="/retrage">Retrage bani</a>
             </p>
             <p>
-              <a href="#!">Servicii comunale</a>
+              <a href="/transfera">Transfera bani</a>
+            </p>
+            <p>
+              <a href="/suplineste">Suplineste contul</a>
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />
@@ -37,10 +40,10 @@ const Footer = () => {
               Link-uri utile
             </h6>
             <p>
-              <a href="#!">Pagina de profil</a>
+              <a href="/profile">Pagina de profil</a>
             </p>
             <p>
-              <a href="#!">Intrebari frecvente</a>
+              <a href="/faq">Intrebari frecvente</a>
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />

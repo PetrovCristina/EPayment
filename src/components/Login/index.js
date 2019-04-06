@@ -32,13 +32,13 @@ class Login extends React.Component {
             md={{ size: 6, offset: 3 }}
             lg={{ size: 4, offset: 4 }}>
             <FormGroup>
-              <Label>Telefon</Label>
+              <Label>Email</Label>
               <Input
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handle_change}
-                placeholder="Introdu numarul de telefon"
+                placeholder="Introdu email"
               />
             </FormGroup>
 

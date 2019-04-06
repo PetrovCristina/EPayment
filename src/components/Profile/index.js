@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './profile.css'
 import { Button } from 'reactstrap'
 import Avatar from 'react-avatar'
+import PropTypes from 'prop-types'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -11,16 +12,17 @@ class Profile extends React.Component {
     this.state = {
       profilePic: null
     }
-    this.inpuElement = null
+    this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleChange(e) {
     this.setState({ profilePic: e.target.files[0] })
   }
   handleSubmit() {
     let formData = new FormData()
-    formData.append('upload', this.state.profilePic)
+    formData.append('image', this.state.profilePic, this.state.profilePic.name)
     fetch('/accounts/images/', {
       method: 'POST',
       headers: {
@@ -107,3 +109,7 @@ class Profile extends React.Component {
 }
 
 export default Profile
+
+Profile.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+}

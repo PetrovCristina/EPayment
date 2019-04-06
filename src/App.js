@@ -17,6 +17,7 @@ import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
 import Profile from './components/Profile'
+import FAQ from './components/FAQ'
 import { Container } from 'reactstrap'
 import { Route, Switch } from 'react-router-dom'
 import * as actions from './store/actions/auth'
@@ -39,6 +40,7 @@ class App extends Component {
     this.state = {
       token,
       logged_in: token ? true : false,
+      submit_img: token ? true : false,
       username: ''
     }
   }
@@ -52,7 +54,19 @@ class App extends Component {
         })
     }
   }
-
+  handleSubmit = data => {
+    ApiService.submit(data)
+      .then(res => res.json())
+      .then(json => {
+        localStorage.setItem('token', json.token)
+        this.setState({
+          token: json.token,
+          submit_img: true,
+          username: json.user.username
+        })
+      })
+      .catch(() => console.log('Invalid data'))
+  }
   handle_login = data => {
     ApiService.login(data)
       .then(res => res.json())
@@ -109,7 +123,12 @@ class App extends Component {
               path="/login"
               render={() => <Login handle_login={this.handle_login} />}
             />
-            <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/profile"
+              render={() => <Profile handleSubmit={this.handleSubmit} />}
+            />
+            <Route exact path="/faq" component={FAQ} />
           </Switch>
         </Container>
         <Footer />
