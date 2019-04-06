@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import './profile.css'
-import { Button, Navbar, Container } from 'reactstrap'
+import { Button } from 'reactstrap'
 import Avatar from 'react-avatar'
 
 class Profile extends React.Component {
@@ -20,8 +20,8 @@ class Profile extends React.Component {
   }
   handleSubmit() {
     let formData = new FormData()
-    formData.append('profile-pic', this.state.profilePic)
-    fetch('/accounts/profile-pic/', {
+    formData.append('upload', this.state.profilePic)
+    fetch('/accounts/images/', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*'
@@ -46,13 +46,6 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <Container>
-            <Button variant="primary" type="submit">
-              Iesire
-            </Button>
-          </Container>
-        </Navbar>
         <div className="clearfix">
           <Avatar
             className="avatar"

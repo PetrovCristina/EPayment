@@ -64,7 +64,7 @@ class App extends Component {
           username: json.user.username
         })
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/profile'))
       .catch(() => console.log('Invalid data'))
   }
 
@@ -95,14 +95,6 @@ class App extends Component {
           logged_in={this.state.logged_in}
           handle_logout={this.handle_logout}
         />
-
-        <Container className="mt-3">
-          <h3>
-            {this.state.logged_in
-              ? `Hello, ${this.state.username}`
-              : 'Please Log In'}
-          </h3>
-        </Container>
 
         <Container className="mt-3">
           <Switch>
