@@ -10,13 +10,30 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      profilePic: null
+      profilePic: null,
+      username: ''
     }
     this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  componentDidMount() {
+    fetch('/accounts/list', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        return response.text()
+      })
+      .then(data => {
+        console.log(JSON.parse(data))
 
+        this.setState({ username: data })
+      })
+  }
   handleChange(e) {
     this.setState({ profilePic: e.target.files[0] })
   }
@@ -55,7 +72,9 @@ class Profile extends React.Component {
             size="80"
             round="50%"
           />
-          <p className="welcome">Bine ai venit!</p>
+          <p className="welcome">
+            Bine ai venit, {/*{this.state.username} */}{' '}
+          </p>
         </div>
         <div className="operations">
           <Button outline color="success" className="pay">
