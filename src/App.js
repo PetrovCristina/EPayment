@@ -109,7 +109,6 @@ class App extends Component {
           logged_in={this.state.logged_in}
           handle_logout={this.handle_logout}
         />
-
         <Container className="mt-3">
           <Switch>
             <Route exact path="/" component={Categories} />

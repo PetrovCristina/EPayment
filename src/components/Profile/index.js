@@ -1,6 +1,5 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import './profile.css'
 import { Button } from 'reactstrap'
 import Avatar from 'react-avatar'
@@ -11,7 +10,7 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       profilePic: null,
-      username: ''
+      username: []
     }
     this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
@@ -25,15 +24,13 @@ class Profile extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
-        return response.text()
-      })
+      .then(res => res.json())
       .then(data => {
-        console.log(JSON.parse(data))
-
+        console.log(data)
         this.setState({ username: data })
       })
   }
+
   handleChange(e) {
     this.setState({ profilePic: e.target.files[0] })
   }
@@ -62,6 +59,7 @@ class Profile extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     })
+
   render() {
     return (
       <div>
@@ -73,7 +71,8 @@ class Profile extends React.Component {
             round="50%"
           />
           <p className="welcome">
-            Bine ai venit, {/*{this.state.username} */}{' '}
+            Bine ai venit,
+            {this.state.username}
           </p>
         </div>
         <div className="operations">
