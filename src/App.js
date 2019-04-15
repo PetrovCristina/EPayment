@@ -11,17 +11,30 @@ import {
   faFileWord,
   faSortAmountUp
 } from '@fortawesome/free-solid-svg-icons'
-import Header from './components/Header'
-import Categories from './components/Categories'
-import Footer from './components/Footer'
-import Register from './components/Register'
-import Login from './components/Login'
-import Profile from './components/Profile'
-import FAQ from './components/FAQ'
 import { Container } from 'reactstrap'
 import { Route, Switch } from 'react-router-dom'
 import * as actions from './store/actions/auth'
 import { ApiService } from './ApiService'
+import Header from './components/Header'
+import Cards from './components/Categories'
+import Footer from './components/Footer'
+import Register from './components/Register'
+import Login from './components/Login'
+import Profile from './components/Profile'
+
+import Mobile from './components/Mobile'
+
+import Comunale from './components/Comunale'
+
+import FAQ from './components/FAQ'
+
+import Internet from './components/Internet'
+
+import TV from './components/TV'
+
+import Payments from './components/Payments'
+
+/*import Pay from './components/Pay' */
 
 library.add(
   faHome,
@@ -53,19 +66,6 @@ class App extends Component {
           this.setState({ username: json.username })
         })
     }
-  }
-  handleSubmit = data => {
-    ApiService.submit(data)
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token)
-        this.setState({
-          token: json.token,
-          submit_img: true,
-          username: json.user.username
-        })
-      })
-      .catch(() => console.log('Invalid data'))
   }
   handle_login = data => {
     ApiService.login(data)
@@ -111,7 +111,7 @@ class App extends Component {
         />
         <Container className="mt-3">
           <Switch>
-            <Route exact path="/" component={Categories} />
+            <Route exact path="/" component={Cards} />
             <Route
               exact
               path="/register"
@@ -127,7 +127,15 @@ class App extends Component {
               path="/profile"
               render={() => <Profile handleSubmit={this.handleSubmit} />}
             />
+            <Route exact path="/plati" component={Payments} />
             <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/mobile" component={Mobile} />
+            <Route exact path="/comunale" component={Comunale} />
+            <Route exact path="/tv" component={TV} />
+            <Route exact path="/internet" component={Internet} />
+            {/*
+            <Route exact path="/achita" component={Pay} />
+*/}
           </Switch>
         </Container>
         <Footer />

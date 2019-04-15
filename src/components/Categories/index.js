@@ -1,96 +1,56 @@
 import React from 'react'
-import {
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardImg,
-  CardFooter,
-  CardText,
-  Button
-} from 'reactstrap'
-import Flippy, { FrontSide, BackSide } from 'react-flippy'
+import { UncontrolledCarousel, Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
-import './categories.css'
-import Telefonie from './images/1.jpg'
-import Online from './images/2.jpg'
-import ServiciiComunale from './images/3.png'
-import TV from './images/4.jpg'
-
-const categories = [
+const items = [
   {
-    name: 'Telefonia mobila',
-    services: ['Orange', 'Moldcell'],
-    image: Telefonie
+    src:
+      'https://images.unsplash.com/photo-1509017174183-0b7e0278f1ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
+    altText: 'Efectueaza plati',
+    caption:
+      'Telefonia mobila, servicii comunale, operatori TV si Internet, Bani electronici',
+    header: (
+      <Button
+        tag={Link}
+        to="/plati"
+        color="info"
+        className="mt-2 mt-md-0 ml-md-2">
+        Efectueaza plati
+      </Button>
+    )
   },
   {
-    name: 'Servicii comunale',
-    services: ['RedNord', 'MoldovaGaz', 'ApaCanal'],
-    image: ServiciiComunale
+    src:
+      'https://images.unsplash.com/photo-1523629619140-ee5b56cb3b23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1174&q=80',
+    altText: 'Schimba valuta',
+    caption: 'Schimba valuta',
+    header: (
+      <Button
+        tag={Link}
+        to="/valuta"
+        color="info"
+        className="mt-2 mt-md-0 ml-md-2">
+        Schimba valuta
+      </Button>
+    )
   },
   {
-    name: 'Operatori TV si Internet',
-    services: ['Moldtelecom', 'SunCommunications'],
-    image: TV
-  },
-  {
-    name: 'Bani electronici',
-    services: ['WebMoney', 'PayPal'],
-    image: Online
+    src:
+      'https://images.unsplash.com/photo-1522096823084-2d1aa8411c13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
+    altText: 'Transfera bani',
+    caption: 'Transfera banii catre un alt utilizator',
+    header: (
+      <Button
+        tag={Link}
+        to="/transfera"
+        color="info"
+        className="mt-2 mt-md-0 ml-md-2">
+        Transfera bani
+      </Button>
+    )
   }
 ]
 
-export default class Categories extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <h2 className="my-4">Operatii</h2>
+const Cards = () => <UncontrolledCarousel items={items} />
 
-        <Row>
-          {categories.map((category, index) => (
-            <Col key={index} xs={12} md={6} lg={4} xl={3} className={'mb-4'}>
-              <Flippy flipOnHover={true} flipDirection="horizontal">
-                <FrontSide style={{ padding: '0' }}>
-                  <Card>
-                    <div className="card-img-wrapper">
-                      <CardImg
-                        top
-                        src={category.image}
-                        style={{ backgroundColor: '#41669d' }}
-                      />
-                    </div>
-                    <CardBody>
-                      <CardText>{category.name}</CardText>
-                    </CardBody>
-                    <CardFooter className="text-truncate">
-                      {category.services.join(', ')}
-                    </CardFooter>
-                  </Card>
-                </FrontSide>
-                <BackSide style={{ padding: '0' }}>
-                  <Card>
-                    <div className="card-img-wrapper">
-                      <CardImg
-                        top
-                        src={category.image}
-                        style={{ backgroundColor: '#175852' }}
-                      />
-                    </div>
-                    <CardBody>
-                      <CardText className="text-truncate">
-                        {category.services.join(', ')}
-                      </CardText>
-                    </CardBody>
-                    <CardFooter>
-                      <Button color="success">Achita</Button>
-                    </CardFooter>
-                  </Card>
-                </BackSide>
-              </Flippy>
-            </Col>
-          ))}
-        </Row>
-      </React.Fragment>
-    )
-  }
-}
+export default Cards

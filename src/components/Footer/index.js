@@ -25,13 +25,7 @@ const Footer = () => {
               <a href="/valuta">Schimba valuta</a>
             </p>
             <p>
-              <a href="/retrage">Retrage bani</a>
-            </p>
-            <p>
               <a href="/transfera">Transfera bani</a>
-            </p>
-            <p>
-              <a href="/suplineste">Suplineste contul</a>
             </p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />

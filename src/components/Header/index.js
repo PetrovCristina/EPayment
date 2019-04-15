@@ -7,11 +7,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  DropdownToggle,
-  UncontrolledDropdown,
-  DropdownMenu,
-  Container,
-  DropdownItem
+  Container
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import { l10n } from '../../l10n'
@@ -26,15 +22,6 @@ function Header({ logged_in, handle_logout }) {
         <NavbarToggler />
         <Collapse navbar>
           <Nav className="ml-auto" navbar>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle caret nav>
-                {l10n('languages.ro')}
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>{l10n('languages.en')}</DropdownItem>
-                <DropdownItem>{l10n('languages.ru')}</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
             {logged_in ? (
               <LoggedInNav handle_logout={handle_logout} />
             ) : (

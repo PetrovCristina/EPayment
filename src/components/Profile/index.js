@@ -4,30 +4,31 @@ import './profile.css'
 import { Button } from 'reactstrap'
 import Avatar from 'react-avatar'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      profilePic: null,
-      username: []
+      profilePic: null
     }
     this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   componentDidMount() {
-    fetch('/accounts/list', {
+    fetch('/accounts/images', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.json())
+      .then(res => res.text())
       .then(data => {
         console.log(data)
-        this.setState({ username: data })
+        this.setState({ images: data })
       })
   }
 
@@ -70,43 +71,49 @@ class Profile extends React.Component {
             size="80"
             round="50%"
           />
-          <p className="welcome">
-            Bine ai venit,
-            {this.state.username}
-          </p>
+          <p className="welcome">Bine ai venit</p>
         </div>
         <div className="operations">
-          <Button outline color="success" className="pay">
+          <Button
+            outline
+            color="success"
+            className="pay"
+            tag={Link}
+            to="/plati">
             <FontAwesomeIcon className="icon" icon="file-invoice-dollar" />
             Efectueaza plati
           </Button>
-          <Button outline color="success" className="pay">
+          <Button
+            outline
+            color="success"
+            className="pay"
+            tag={Link}
+            to="/valuta">
             <FontAwesomeIcon className="icon" icon="sync-alt" />
             Schimba valuta
           </Button>
-          <Button outline color="success" className="pay">
-            <FontAwesomeIcon className="icon" icon="file-word" />
-            Retrage bani
-          </Button>
-          <Button outline color="success" className="pay">
+          <Button
+            outline
+            color="success"
+            className="pay"
+            tag={Link}
+            to="/transfera">
             <FontAwesomeIcon className="icon" icon="handshake" />
             Transfera bani
-          </Button>
-          <Button outline color="success" className="pay">
-            <FontAwesomeIcon className="icon" icon="sort-amount-up" />
-            Suplineste contul
           </Button>
         </div>
         <div>
           <p className="images">Imagini</p>
           <p className="description">
-            Aici vei incarca pozele (de la 2 pina la 4) pentru autentificarea
-            beneficiarului prin recunoastere faciala:
+            Aici veti incarca pozele (de la 2 pina la 4) pentru autentificarea
+            prin recunoastere faciala.
           </p>
+          <p className="description">Cerinte: </p>
           <ul className="restrictions">
-            <li>cerinta 1</li>
-            <li>cerinta 2</li>
-            <li>cerinta 3</li>
+            <li>Asigurati-va ca pozele sunt de calitate inalta.</li>
+            <li>Incarcati poze in care iluminarea este foarte buna.</li>
+            <li>In poze trebuie sa fie vazuta clar fata.</li>
+            <li>Pozele trebuie sa fie in format ".jpg", ".jpeg" sau ".png".</li>
           </ul>
           <div>
             <input
@@ -118,7 +125,17 @@ class Profile extends React.Component {
               accept=".jpg,.jpeg,.png"
               onChange={this.handleChange}
             />
-            <button onClick={this.handleSubmit}>submit</button>
+            <Button
+              onClick={this.handleSubmit}
+              color="success"
+              className="mt-2 mt-md-0 ml-md-2">
+              Submit
+            </Button>
+            {/*  <div>
+              {images.map(i => (
+                <img src={i.image} alt="" />
+              ))}
+            </div> */}
           </div>
         </div>
       </div>
