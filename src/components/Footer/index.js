@@ -34,9 +34,6 @@ const Footer = () => {
               Link-uri utile
             </h6>
             <p>
-              <a href="/profile">Pagina de profil</a>
-            </p>
-            <p>
               <a href="/faq">Intrebari frecvente</a>
             </p>
           </MDBCol>

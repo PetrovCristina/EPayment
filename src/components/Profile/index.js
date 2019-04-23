@@ -2,7 +2,6 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './profile.css'
 import { Button } from 'reactstrap'
-import Avatar from 'react-avatar'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
@@ -65,13 +64,7 @@ class Profile extends React.Component {
     return (
       <div>
         <div className="clearfix">
-          <Avatar
-            className="avatar"
-            facebookId="100002063356654"
-            size="80"
-            round="50%"
-          />
-          <p className="welcome">Bine ai venit</p>
+          <p className="welcome">Bine ai venit!</p>
         </div>
         <div className="operations">
           <Button

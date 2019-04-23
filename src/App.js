@@ -21,10 +21,9 @@ import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
 import Profile from './components/Profile'
-
-import Mobile from './components/Mobile'
-
+import Converter from './components/Currency'
 import Comunale from './components/Comunale'
+import Mobile from './components/Mobile'
 
 import FAQ from './components/FAQ'
 
@@ -34,7 +33,7 @@ import TV from './components/TV'
 
 import Payments from './components/Payments'
 
-/*import Pay from './components/Pay' */
+import Pay from './components/Pay'
 
 library.add(
   faHome,
@@ -133,9 +132,8 @@ class App extends Component {
             <Route exact path="/comunale" component={Comunale} />
             <Route exact path="/tv" component={TV} />
             <Route exact path="/internet" component={Internet} />
-            {/*
             <Route exact path="/achita" component={Pay} />
-*/}
+            <Route exact path="/valuta" component={Converter} />
           </Switch>
         </Container>
         <Footer />

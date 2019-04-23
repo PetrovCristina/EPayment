@@ -1,12 +1,9 @@
 .welcome {
-  margin-left: 150px;
+  margin-left: 20px;
   margin-top: 20px;
   color: #393232;
   font-size: 30px;
-}
-.avatar {
   float: left;
-  margin-left: 20px;
 }
 .clearfix {
   overflow: auto;
