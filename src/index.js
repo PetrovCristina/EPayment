@@ -17,7 +17,7 @@ const store = createStore(reducer, composeEnhances(applyMiddleware(thunk)))
 const app = (
   <Provider store={store}>
     <BrowserRouter>
-      <Route key="id1" component={App} />
+      <Route component={App} />
     </BrowserRouter>
   </Provider>
 )

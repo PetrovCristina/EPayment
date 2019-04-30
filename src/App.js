@@ -34,7 +34,7 @@ import TV from './components/TV'
 import Payments from './components/Payments'
 
 import Pay from './components/Pay'
-
+import Verify from './components/Verify'
 library.add(
   faHome,
   faEnvelope,
@@ -134,6 +134,7 @@ class App extends Component {
             <Route exact path="/internet" component={Internet} />
             <Route exact path="/achita" component={Pay} />
             <Route exact path="/valuta" component={Converter} />
+            <Route exact path="/verify" component={Verify} />
           </Switch>
         </Container>
         <Footer />

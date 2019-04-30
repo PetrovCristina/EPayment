@@ -8,7 +8,7 @@ import {
   formatFormData
 } from './utils'
 import './pay.css'
-
+import { Link } from 'react-router-dom'
 import 'react-credit-cards/es/styles-compiled.css'
 
 class Pay extends React.Component {
@@ -124,14 +124,15 @@ class Pay extends React.Component {
             </div>
             <input type="hidden" name="issuer" value={issuer} />
             <div className="form-actions">
-              <button className="btn btn-primary btn-block">PAY</button>
+              <Link to="/verify">
+                {' '}
+                <button className="btn btn-primary btn-block">PAY</button>
+              </Link>
             </div>
           </form>
           {formData && (
             <div className="App-highlight">
-              {formatFormData(formData).map((d, i) => (
-                <div key={i}>{d}</div>
-              ))}
+              {formatFormData(formData).map((d, i) => <div key={i}>{d}</div>)}
             </div>
           )}
         </div>
