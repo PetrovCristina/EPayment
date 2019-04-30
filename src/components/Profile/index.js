@@ -1,15 +1,15 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './profile.css'
-import { Button } from 'reactstrap'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-
+import { Button } from 'reactstrap'
 class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      profilePic: null
+      profilePic: null,
+      items: []
     }
     this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
@@ -17,20 +17,13 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/accounts/images', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(res => res.text())
-      .then(data => {
-        console.log(data)
-        this.setState({ images: data })
-      })
+    this.getItems()
   }
-
+  getItems() {
+    fetch('/accounts/images/')
+      .then(results => results.json())
+      .then(results => this.setState({ items: results }))
+  }
   handleChange(e) {
     this.setState({ profilePic: e.target.files[0] })
   }
@@ -124,11 +117,16 @@ class Profile extends React.Component {
               className="mt-2 mt-md-0 ml-md-2">
               Submit
             </Button>
-            {/*  <div>
-              {images.map(i => (
-                <img src={i.image} alt="" />
-              ))}
-            </div> */}
+
+            <div className="row">
+              {this.state.items.map(function(item, index) {
+                return (
+                  <div className="column">
+                    <img width="100%" alt="" src={item.image} />
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

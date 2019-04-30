@@ -22,23 +22,23 @@ header img {
   padding-left: 40px;
 }
 .content .row .currency-flag {
-  background: url('./images/aud.png') no-repeat left;
+  background: url('./images/mdl.png') no-repeat left;
   background-size: 30px auto;
 }
-.content .row .currency-flag.CAD {
-  background-image: url('./images/cad.png');
+.content .row .currency-flag.EUR {
+  background-image: url('./images/eur.svg');
 }
 .content .row .currency-flag.USD {
   background-image: url('./images/usd.png');
 }
-.content .row .currency-flag.JPY {
-  background-image: url('./images/jpy.png');
+.content .row .currency-flag.RUB {
+  background-image: url('./images/ru.svg');
 }
-.content .row .currency-flag.NZD {
-  background-image: url('./images/nzd.png');
+.content .row .currency-flag.RON {
+  background-image: url('./images/ro.png');
 }
-.content .row .currency-flag.GBP {
-  background-image: url('./images/gbp.png');
+.content .row .currency-flag.UAH {
+  background-image: url('./images/uah.png');
 }
 @media (min-width: 768px) {
   .content .currency-from-input {

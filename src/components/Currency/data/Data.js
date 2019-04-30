@@ -1,40 +1,40 @@
 const data = {
   currencies: [
     {
-      code: 'AUD',
+      code: 'MDL',
       sellRate: 1,
-      name: 'Australian Dollars',
-      sign: '$'
+      name: 'Lei Moldovenesti',
+      sign: 'MDL'
     },
     {
       code: 'USD',
-      sellRate: 0.7041,
-      name: 'United States Dollars',
+      sellRate: 17.89,
+      name: 'Dolari Americani',
       sign: '$'
     },
     {
-      code: 'CAD',
-      sellRate: 0.9504,
-      name: 'Canadian Dollars',
-      sign: '$'
+      code: 'EUR',
+      sellRate: 20.13,
+      name: 'Euro',
+      sign: '€'
     },
     {
-      code: 'NZD',
-      sellRate: 0.9949,
-      name: 'New Zealand Dollars',
-      sign: '$'
+      code: 'RUB',
+      sellRate: 0.28,
+      name: 'Ruble Rusesti',
+      sign: '₽'
     },
     {
-      code: 'JPY',
-      sellRate: 78.21,
-      name: 'Japanese Yen',
-      sign: '¥'
+      code: 'RON',
+      sellRate: 4.23,
+      name: 'Lei Romanesti',
+      sign: 'RON'
     },
     {
-      code: 'GBP',
-      sellRate: 0.5472,
-      name: 'British Pounds Sterling',
-      sign: '£'
+      code: 'UAH',
+      sellRate: 0.67,
+      name: 'Grivne',
+      sign: '₴'
     }
   ]
 }
