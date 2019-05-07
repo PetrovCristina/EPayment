@@ -9,7 +9,8 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       profilePic: null,
-      items: []
+      items: [],
+      users: []
     }
     this.inputElement = null
     this.handleChange = this.handleChange.bind(this)
@@ -19,6 +20,7 @@ class Profile extends React.Component {
   componentDidMount() {
     this.getItems()
   }
+
   getItems() {
     fetch('/accounts/images/')
       .then(results => results.json())
@@ -56,8 +58,10 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        <div className="clearfix">
-          <p className="welcome">Bine ai venit!</p>
+        <div className="row">
+          {this.state.users.map(function(user, index) {
+            return <div className="column">{user.username}</div>
+          })}
         </div>
         <div className="operations">
           <Button
@@ -101,6 +105,9 @@ class Profile extends React.Component {
             <li>In poze trebuie sa fie vazuta clar fata.</li>
             <li>Pozele trebuie sa fie in format ".jpg", ".jpeg" sau ".png".</li>
           </ul>
+          <p className="description">
+            *Dupa incarcarea pozelor, faceti refresh la pagina!{' '}
+          </p>
           <div>
             <input
               type="file"
@@ -115,7 +122,7 @@ class Profile extends React.Component {
               onClick={this.handleSubmit}
               color="success"
               className="mt-2 mt-md-0 ml-md-2">
-              Submit
+              Incarca
             </Button>
 
             <div className="row">

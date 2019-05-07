@@ -104,12 +104,23 @@ class App extends Component {
   }
 
   render() {
+    const welcome = {
+      marginLeft: '110px',
+      marginTop: '20px',
+      color: '#393232',
+      fontSize: '30px'
+    }
     return (
       <React.Fragment>
         <Header
           logged_in={this.state.logged_in}
           handle_logout={this.handle_logout}
         />
+        <p style={welcome}>
+          {this.state.logged_in
+            ? `Acesta este profilul meu, ${this.state.username} :)`
+            : ''}
+        </p>
         <Container className="mt-3">
           <Switch>
             <Route exact path="/" component={Cards} />
