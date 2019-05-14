@@ -20,7 +20,10 @@ const INIT_STATE = {
 class ImageInput extends Component {
   constructor(props) {
     super(props)
-    this.state = { ...INIT_STATE, faceMatcher: null }
+    this.state = {
+      ...INIT_STATE,
+      faceMatcher: null
+    }
   }
 
   componentWillMount = async () => {
@@ -28,7 +31,6 @@ class ImageInput extends Component {
     this.setState({ faceMatcher: await createMatcher(JSON_PROFILE) })
     await this.handleImage(this.state.imageURL)
   }
-
   handleImage = async (image = this.state.imageURL) => {
     await getFullFaceDescription(image).then(fullDesc => {
       if (!!fullDesc) {
@@ -105,21 +107,40 @@ class ImageInput extends Component {
 
     return (
       <div>
-        <input
-          id="myFileUpload"
-          type="file"
-          onChange={this.handleFileChange}
-          accept=".jpg, .jpeg, .png"
-        />
-        <div style={{ position: 'relative' }}>
-          <div style={{ position: 'absolute' }}>
-            <img src={imageURL} alt="imageURL" />
+        <div>
+          <input
+            id="myFileUpload"
+            type="file"
+            onChange={this.handleFileChange}
+            accept=".jpg, .jpeg, .png"
+          />
+          <div style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute' }}>
+              <h3
+                style={{
+                  marginTop: '20px',
+                  marginBottom: '20px'
+                }}>
+                Imagine model:{' '}
+              </h3>
+              <img src={imageURL} alt="imageURL" />
+
+              <p>
+                Verificati poza sa fie clara, cu iluminare naturala si de o
+                calitate inalta.{' '}
+              </p>
+              <p>
+                Formatele acceptate:
+                <i>.jpeg, .jpg, .png.</i>{' '}
+              </p>
+              <h5>Incarcati o singura poza!</h5>
+            </div>
+
+            {!!drawBox ? drawBox : null}
           </div>
-          {!!drawBox ? drawBox : null}
         </div>
       </div>
     )
   }
 }
-
 export default withRouter(ImageInput)

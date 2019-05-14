@@ -124,7 +124,7 @@ class Pay extends React.Component {
             </div>
             <input type="hidden" name="issuer" value={issuer} />
             <div className="form-actions">
-              <Link to="/verify">
+              <Link to="/camera">
                 {' '}
                 <button className="btn btn-primary btn-block">PAY</button>
               </Link>

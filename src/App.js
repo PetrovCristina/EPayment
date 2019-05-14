@@ -34,8 +34,8 @@ import TV from './components/TV'
 import Payments from './components/Payments'
 
 import Pay from './components/Pay'
-import Verify from './components/Verify'
 import ImageInput from './views/ImageInput'
+import VideoInput from './views/VideoInput'
 
 library.add(
   faHome,
@@ -147,8 +147,8 @@ class App extends Component {
             <Route exact path="/internet" component={Internet} />
             <Route exact path="/achita" component={Pay} />
             <Route exact path="/valuta" component={Converter} />
-            <Route exact path="/verify" component={Verify} />
             <Route exact path="/photo" component={ImageInput} />
+            <Route exact path="/camera" component={VideoInput} />
           </Switch>
         </Container>
         <Footer />
